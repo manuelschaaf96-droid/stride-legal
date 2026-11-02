@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stride</title>
+<meta property="og:title" content="Ein Lauf auf Stride">
+<meta property="og:description" content="In der Stride-App öffnen.">
+<meta property="og:image" content="https://manuelschaaf96-droid.github.io/stride-legal/icon.png">
+<style>
+  body { font-family: -apple-system, system-ui, sans-serif; max-width: 480px; margin: 0 auto; padding: 64px 24px; line-height: 1.5; color: #111827; background: #F5F6F7; text-align: center; }
+  img { width: 88px; height: 88px; border-radius: 22px; }
+  h1 { color: #12362E; font-size: 1.6em; margin: 24px 0 8px; }
+  p { color: #4B5563; }
+  .open { display: block; margin: 32px 0 16px; padding: 16px; border-radius: 999px; background: #12362E; color: #fff; font-weight: 700; font-size: 1.1em; text-decoration: none; }
+  .muted { color: #6B7280; font-size: 0.95em; }
+</style>
+</head>
+<body>
+<img src="./icon.png" alt="Stride">
+<h1>Ein Lauf auf Stride</h1>
+<p>Jemand hat dir einen Lauf geschickt. Öffne ihn in der App, um zu sehen, wann und wo es losgeht, und um dabei zu sein.</p>
+<a class="open" id="open" href="stride://">In Stride öffnen</a>
+<p class="muted">Noch keine App? Stride kommt bald in den App Store und zu Google Play.</p>
+<script>
+  // Only an id goes into the app link, nothing else from the address.
+  var id = new URLSearchParams(location.search).get('id') || '';
+  if (/^[0-9a-f-]{36}$/i.test(id)) {
+    var link = 'stride://run/' + id;
+    document.getElementById('open').href = link;
+    location.href = link;
+  }
+</script>
+</body>
+</html>
